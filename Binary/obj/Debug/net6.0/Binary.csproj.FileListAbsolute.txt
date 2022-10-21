@@ -1,0 +1,23 @@
+C:/Users/mjrez/OneDrive/Desktop/Binary/Binary/bin/Debug/net6.0/Binary.exe
+C:/Users/mjrez/OneDrive/Desktop/Binary/Binary/bin/Debug/net6.0/Binary.deps.json
+C:/Users/mjrez/OneDrive/Desktop/Binary/Binary/bin/Debug/net6.0/Binary.runtimeconfig.json
+C:/Users/mjrez/OneDrive/Desktop/Binary/Binary/bin/Debug/net6.0/Binary.dll
+C:/Users/mjrez/OneDrive/Desktop/Binary/Binary/bin/Debug/net6.0/Binary.pdb
+C:/Users/mjrez/OneDrive/Desktop/Binary/Binary/obj/Debug/net6.0/Binary.csproj.AssemblyReference.cache
+C:/Users/mjrez/OneDrive/Desktop/Binary/Binary/obj/Debug/net6.0/Binary.GeneratedMSBuildEditorConfig.editorconfig
+C:/Users/mjrez/OneDrive/Desktop/Binary/Binary/obj/Debug/net6.0/Binary.AssemblyInfoInputs.cache
+C:/Users/mjrez/OneDrive/Desktop/Binary/Binary/obj/Debug/net6.0/Binary.AssemblyInfo.cs
+C:/Users/mjrez/OneDrive/Desktop/Binary/Binary/obj/Debug/net6.0/Binary.csproj.CoreCompileInputs.cache
+C:/Users/mjrez/OneDrive/Desktop/Binary/Binary/obj/Debug/net6.0/Binary.dll
+C:/Users/mjrez/OneDrive/Desktop/Binary/Binary/obj/Debug/net6.0/refint/Binary.dll
+C:/Users/mjrez/OneDrive/Desktop/Binary/Binary/obj/Debug/net6.0/Binary.pdb
+C:/Users/mjrez/OneDrive/Desktop/Binary/Binary/obj/Debug/net6.0/Binary.genruntimeconfig.cache
+C:/Users/mjrez/OneDrive/Desktop/Binary/Binary/obj/Debug/net6.0/ref/Binary.dll
+/Users/osamaeshmilh/Study/C Sharp/Binary/Binary/obj/Debug/net6.0/Binary.csproj.AssemblyReference.cache
+/Users/osamaeshmilh/Study/C Sharp/Binary/Binary/obj/Debug/net6.0/Binary.GeneratedMSBuildEditorConfig.editorconfig
+/Users/osamaeshmilh/Study/C Sharp/Binary/Binary/obj/Debug/net6.0/Binary.AssemblyInfoInputs.cache
+/Users/osamaeshmilh/Study/C Sharp/Binary/Binary/obj/Debug/net6.0/Binary.AssemblyInfo.cs
+/Users/osamaeshmilh/Study/C Sharp/Binary/Binary/obj/Debug/net6.0/Binary.csproj.CoreCompileInputs.cache
+/Users/osamaeshmilh/Study/C Sharp/Binary/Binary/obj/Debug/net6.0/Binary.dll
+/Users/osamaeshmilh/Study/C Sharp/Binary/Binary/obj/Debug/net6.0/refint/Binary.dll
+/Users/osamaeshmilh/Study/C Sharp/Binary/Binary/obj/Debug/net6.0/Binary.pdb
