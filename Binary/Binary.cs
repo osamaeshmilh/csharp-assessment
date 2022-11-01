@@ -11,6 +11,21 @@ namespace CP
 
     class Binary
     {
+
+        Int32 X
+        {
+            get;
+            set;
+        }
+
+        public static implicit operator Binary(Int32 value)
+        {
+            return new Binary()
+            {
+                X = value
+            };
+        }
+
         #region(Fields)
         #endregion
         #region(Properties)
