@@ -1,17 +1,22 @@
 ﻿<Properties StartupConfiguration="{6399003F-E14C-45DB-B414-3395FC5F22A3}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Binary/Test.cs">
-    <Files>
-      <File FileName="Binary/Binary.cs" Line="24" Column="14"/>
-      <File FileName="Binary/ExpectedOutput.txt" Line="17" Column="46"/>
-      <File FileName="Binary/Program.cs" Line="7" Column="31"/>
-      <File FileName="Binary/Test.cs" Line="17" Column="42"/>
-    </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
+    <MonoDevelop.Ide.DebuggingService.Breakpoints>
+        <BreakpointStore/>
+    </MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <MultiItemStartupConfigurations/>
+    <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug"/>
+    <MonoDevelop.Ide.Workbench ActiveDocument="Binary/Test.cs">
+        <Files>
+            <File FileName="Binary/Binary.cs" Line="21" Column="31"/>
+            <File FileName="Binary/ExpectedOutput.txt" Line="17" Column="46"/>
+            <File FileName="Binary/Program.cs" Line="7" Column="31"/>
+            <File FileName="Binary/Test.cs" Line="17" Column="5"/>
+        </Files>
+        <Pads>
+            <Pad Id="ProjectPad">
+                <State name="__root__">
           <Node name="Binary" expanded="True">
             <Node name="Binary" expanded="True">
-              <Node name="Test.cs" selected="True"/>
+                <Node name="Test.cs" selected="True"/>
             </Node>
           </Node>
         </State>
@@ -21,11 +26,6 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.Binary PreferredExecutionTarget="MonoDevelop.Default" />
-  <MultiItemStartupConfigurations />
 </Properties>

@@ -21,3 +21,10 @@ C:/Users/mjrez/OneDrive/Desktop/Binary/Binary/obj/Debug/net6.0/ref/Binary.dll
 /Users/osamaeshmilh/Study/C Sharp/Binary/Binary/obj/Debug/net6.0/Binary.dll
 /Users/osamaeshmilh/Study/C Sharp/Binary/Binary/obj/Debug/net6.0/refint/Binary.dll
 /Users/osamaeshmilh/Study/C Sharp/Binary/Binary/obj/Debug/net6.0/Binary.pdb
+/Users/osamaeshmilh/Study/C Sharp/Binary/Binary/bin/Debug/net6.0/Binary
+/Users/osamaeshmilh/Study/C Sharp/Binary/Binary/bin/Debug/net6.0/Binary.deps.json
+/Users/osamaeshmilh/Study/C Sharp/Binary/Binary/bin/Debug/net6.0/Binary.runtimeconfig.json
+/Users/osamaeshmilh/Study/C Sharp/Binary/Binary/bin/Debug/net6.0/Binary.dll
+/Users/osamaeshmilh/Study/C Sharp/Binary/Binary/bin/Debug/net6.0/Binary.pdb
+/Users/osamaeshmilh/Study/C Sharp/Binary/Binary/obj/Debug/net6.0/Binary.genruntimeconfig.cache
+/Users/osamaeshmilh/Study/C Sharp/Binary/Binary/obj/Debug/net6.0/ref/Binary.dll
