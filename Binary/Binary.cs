@@ -14,6 +14,7 @@ namespace CP
 
     class Binary
     {
+        //TODO: Remove this X variable if not required
         int X
         {
             get;
@@ -41,37 +42,40 @@ namespace CP
             //    counter++;
             //}
             //Console.WriteLine($"sum is: {sum}");
-            return new Binary()
+            return new Binary(value)
             {
                 X = value
             };
         }
+
+        public Binary(int value)
+        {
+            int[] tempBinaryNumber = Convert.ToString(value, 2).Select(c => c - '0').ToArray();
+            int missingBits = 16 - tempBinaryNumber.Length;
+            int counter = 0;
+            for (int i = 0; i < missingBits; i++)
+            {
+                binaryNumber[i] = 0;
+            }
+            for (int i = missingBits; i < 16; i++)
+            {
+                binaryNumber[i] = tempBinaryNumber[counter];
+                counter++;
+            }
+        }
         
         public override string ToString()
         {
-            binaryNumber = Convert.ToString(X, 2).Select(c => c - '0').ToArray();
-            int missingBits = 16 - binaryNumber.Length;
             string temp = "";
-            int space = 0;
-            for (int i = 0; i < missingBits; i++)
+            for (int i = 0; i < binaryNumber.Length; i++)
             {
                 if (i != 0 && i % 4 == 0)
                 {
-                    temp += ' ';
-                    space++;
-                }
-                temp += '0';
-            }
-            for (int i = 0; i < binaryNumber.Length; i++)
-            {
-                if ((temp.Length - space ) % 4 == 0)
-                {
                     temp += " ";
-                    space++;
                 }
                 temp += binaryNumber[i];
             }
-            return temp.ToString();
+            return temp;
         }
 
         public static Binary operator << (Binary number, int place)

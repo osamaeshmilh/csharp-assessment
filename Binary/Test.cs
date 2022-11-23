@@ -13,10 +13,10 @@ namespace CP
             Console.WriteLine("------------------Shift Operator Test------------------");
 
             Console.WriteLine("assigning 1010 to x");
-            Binary x1 = 0b1010;   // Notation for literals:  0x-Hex   0b-Binary
+            Binary x = 20;   // Notation for literals:  0x-Hex   0b-Binary
             
             int[] array = { 2, 3, 4, 5 };
-            Console.WriteLine("printing x (0000 0000 0000 1010): {0}", x1);
+            Console.WriteLine("printing x (0000 0000 0000 1010): {0}", x);
 
             //Console.WriteLine("shifting x by 4 places to the left"); x <<= 4;
             //Console.WriteLine("printing x (0000 0000 1010 0000): {0}", x);
@@ -29,7 +29,7 @@ namespace CP
 
             //Console.WriteLine("shifting x 4 places to the left"); x <<= 4;
             //Console.WriteLine("printing x (0000 0000 0000 0000): {0}", x);
-
+            
             Console.WriteLine();
         }
 
