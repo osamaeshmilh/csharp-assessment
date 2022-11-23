@@ -1,4 +1,5 @@
 ﻿<Properties StartupConfiguration="{6399003F-E14C-45DB-B414-3395FC5F22A3}|Default">
+<<<<<<< Updated upstream
     <MonoDevelop.Ide.DebuggingService.Breakpoints>
         <BreakpointStore/>
     </MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -17,15 +18,37 @@
           <Node name="Binary" expanded="True">
             <Node name="Binary" expanded="True">
                 <Node name="Test.cs" selected="True"/>
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Binary/Test.cs">
+    <Files>
+      <File FileName="Binary/Binary.cs" Line="30" Column="15" />
+      <File FileName="Binary/Program.cs" Line="7" Column="23" />
+      <File FileName="Binary/Test.cs" Line="20" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Binary" expanded="True">
+            <Node name="Binary" expanded="True">
+              <Node name="Test.cs" selected="True" />
+>>>>>>> Stashed changes
             </Node>
           </Node>
         </State>
       </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
-      </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+<<<<<<< Updated upstream
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.Binary PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>
+=======
+  <MonoDevelop.Ide.ItemProperties.Binary PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+</Properties>
+>>>>>>> Stashed changes

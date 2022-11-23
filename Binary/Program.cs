@@ -2,6 +2,6 @@
 using CP;
 
 Test.ShiftOperatorTest();
-Test.UnayOperatorTest();
-Test.ArithmeticOperatorTest();
-Test.RelationalOperatorTest();
+//Test.UnayOperatorTest();
+//Test.ArithmeticOperatorTest();
+//Test.RelationalOperatorTest();

@@ -21,6 +21,7 @@ C:/Users/mjrez/OneDrive/Desktop/Binary/Binary/obj/Debug/net6.0/ref/Binary.dll
 /Users/osamaeshmilh/Study/C Sharp/Binary/Binary/obj/Debug/net6.0/Binary.dll
 /Users/osamaeshmilh/Study/C Sharp/Binary/Binary/obj/Debug/net6.0/refint/Binary.dll
 /Users/osamaeshmilh/Study/C Sharp/Binary/Binary/obj/Debug/net6.0/Binary.pdb
+<<<<<<< Updated upstream
 /Users/osamaeshmilh/Study/C Sharp/Binary/Binary/bin/Debug/net6.0/Binary
 /Users/osamaeshmilh/Study/C Sharp/Binary/Binary/bin/Debug/net6.0/Binary.deps.json
 /Users/osamaeshmilh/Study/C Sharp/Binary/Binary/bin/Debug/net6.0/Binary.runtimeconfig.json
@@ -28,3 +29,20 @@ C:/Users/mjrez/OneDrive/Desktop/Binary/Binary/obj/Debug/net6.0/ref/Binary.dll
 /Users/osamaeshmilh/Study/C Sharp/Binary/Binary/bin/Debug/net6.0/Binary.pdb
 /Users/osamaeshmilh/Study/C Sharp/Binary/Binary/obj/Debug/net6.0/Binary.genruntimeconfig.cache
 /Users/osamaeshmilh/Study/C Sharp/Binary/Binary/obj/Debug/net6.0/ref/Binary.dll
+=======
+/Users/nitish/SHU/computer programming/csharp-assessment/Binary/bin/Debug/net6.0/Binary
+/Users/nitish/SHU/computer programming/csharp-assessment/Binary/bin/Debug/net6.0/Binary.deps.json
+/Users/nitish/SHU/computer programming/csharp-assessment/Binary/bin/Debug/net6.0/Binary.runtimeconfig.json
+/Users/nitish/SHU/computer programming/csharp-assessment/Binary/bin/Debug/net6.0/Binary.dll
+/Users/nitish/SHU/computer programming/csharp-assessment/Binary/bin/Debug/net6.0/Binary.pdb
+/Users/nitish/SHU/computer programming/csharp-assessment/Binary/obj/Debug/net6.0/Binary.csproj.AssemblyReference.cache
+/Users/nitish/SHU/computer programming/csharp-assessment/Binary/obj/Debug/net6.0/Binary.GeneratedMSBuildEditorConfig.editorconfig
+/Users/nitish/SHU/computer programming/csharp-assessment/Binary/obj/Debug/net6.0/Binary.AssemblyInfoInputs.cache
+/Users/nitish/SHU/computer programming/csharp-assessment/Binary/obj/Debug/net6.0/Binary.AssemblyInfo.cs
+/Users/nitish/SHU/computer programming/csharp-assessment/Binary/obj/Debug/net6.0/Binary.csproj.CoreCompileInputs.cache
+/Users/nitish/SHU/computer programming/csharp-assessment/Binary/obj/Debug/net6.0/Binary.dll
+/Users/nitish/SHU/computer programming/csharp-assessment/Binary/obj/Debug/net6.0/refint/Binary.dll
+/Users/nitish/SHU/computer programming/csharp-assessment/Binary/obj/Debug/net6.0/Binary.pdb
+/Users/nitish/SHU/computer programming/csharp-assessment/Binary/obj/Debug/net6.0/Binary.genruntimeconfig.cache
+/Users/nitish/SHU/computer programming/csharp-assessment/Binary/obj/Debug/net6.0/ref/Binary.dll
+>>>>>>> Stashed changes

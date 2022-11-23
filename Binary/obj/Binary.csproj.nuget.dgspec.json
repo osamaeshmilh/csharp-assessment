@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/osamaeshmilh/Study/C Sharp/Binary/Binary/Binary.csproj": {}
+    "/Users/nitish/SHU/computer programming/csharp-assessment/Binary/Binary.csproj": {}
   },
   "projects": {
-    "/Users/osamaeshmilh/Study/C Sharp/Binary/Binary/Binary.csproj": {
+    "/Users/nitish/SHU/computer programming/csharp-assessment/Binary/Binary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/osamaeshmilh/Study/C Sharp/Binary/Binary/Binary.csproj",
+        "projectUniqueName": "/Users/nitish/SHU/computer programming/csharp-assessment/Binary/Binary.csproj",
         "projectName": "Binary",
-        "projectPath": "/Users/osamaeshmilh/Study/C Sharp/Binary/Binary/Binary.csproj",
-        "packagesPath": "/Users/osamaeshmilh/.nuget/packages/",
-        "outputPath": "/Users/osamaeshmilh/Study/C Sharp/Binary/Binary/obj/",
+        "projectPath": "/Users/nitish/SHU/computer programming/csharp-assessment/Binary/Binary.csproj",
+        "packagesPath": "/Users/nitish/.nuget/packages/",
+        "outputPath": "/Users/nitish/SHU/computer programming/csharp-assessment/Binary/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/osamaeshmilh/.nuget/NuGet/NuGet.Config"
+          "/Users/nitish/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -53,7 +53,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.401/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.100/RuntimeIdentifierGraph.json"
         }
       }
     }
