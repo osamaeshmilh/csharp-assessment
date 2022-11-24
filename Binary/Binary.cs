@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Metrics;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using Microsoft.VisualBasic;
@@ -21,27 +22,10 @@ namespace CP
             set;
         }
 
-        int[] binaryNumber = new int[16];
+        private int[] binaryNumber = new int[16];
 
         public static implicit operator Binary(int value)
         {
-            //Console.WriteLine($"{value});
-            //Boolean isNegative = false;
-            //string binaryNumber = Convert.ToString(value, 2);
-            //Console.WriteLine(binaryNumber);
-            //if(value < 0)
-            //{
-            //    isNegative = true;
-            //}
-            //int sum = 0;
-            //int counter = 0;
-            ////isNegative ? 16 : binaryNumber.Length - 1;
-            //for (int i = binaryNumber.Length - 1; i >= 0; i--)
-            //{
-            //    sum = sum + (int.Parse(binaryNumber[i].ToString()) * Convert.ToInt16(Math.Pow(2, counter)));
-            //    counter++;
-            //}
-            //Console.WriteLine($"sum is: {sum}");
             return new Binary(value)
             {
                 X = value
@@ -50,7 +34,16 @@ namespace CP
 
         public Binary(int value)
         {
-            int[] tempBinaryNumber = Convert.ToString(value, 2).Select(c => c - '0').ToArray();
+            int[] tempBinaryNumber = new int[0];
+            string binaryNumberInStringFormat = Convert.ToString(value, 2);
+            if(binaryNumberInStringFormat.Length > 16)
+            {
+                tempBinaryNumber = binaryNumberInStringFormat.Substring(16).Select(c => c - '0').ToArray();
+            }
+            else
+            {
+                tempBinaryNumber = binaryNumberInStringFormat.Select(c => c - '0').ToArray();
+            }
             int missingBits = 16 - tempBinaryNumber.Length;
             int counter = 0;
             for (int i = 0; i < missingBits; i++)
@@ -80,9 +73,89 @@ namespace CP
 
         public static Binary operator << (Binary number, int place)
         {
+            int newArrayLength= number.binaryNumber.Length - place;
+            int[] tempNumber = new int[newArrayLength];
+            for(int i = place; i < number.binaryNumber.Length; i++)
+            {
+                tempNumber[i-place] = number.binaryNumber[i];
+            }
+            for(int i = 0; i < 16; i++)
+            {
+                if(i >= tempNumber.Length)
+                {
+                    number.binaryNumber[i] = 0;
+                }
+                else
+                {
+                    number.binaryNumber[i] = tempNumber[i];
+                }
+            }
             return number;
         }
 
+        public static Binary operator >> (Binary number, int place)
+        {
+            int newArrayLength = number.binaryNumber.Length - place;
+            int[] tempNumber = new int[newArrayLength];
+            for (int i = 0; i < newArrayLength; i++)
+            {
+                tempNumber[i] = number.binaryNumber[i];
+            }
+            for (int i = 0; i < 16; i++)
+            {
+                if (i < place)
+                {
+                    number.binaryNumber[i] = 0;
+                }
+                else
+                {
+                    number.binaryNumber[i] = tempNumber[i-place];
+                }
+            }
+            return number;
+        }
+
+        public double ToDecimal()
+        {
+            double sum = 0;
+            int counter = 0;
+            for (int i = binaryNumber.Length - 1; i >= 0; i--)
+            {
+                sum = sum + (binaryNumber[i] * Math.Pow(2, counter));
+                counter++;
+            }
+            return sum;
+
+        }
+
+        public static Binary operator + (Binary number1, Binary number2)
+        {
+            int[] sum = new int[16];
+            int carry = 0;
+            int add = 0;
+            for(int i = 15; i>= 0; i--)
+            {
+                add = number1.binaryNumber[i] + number2.binaryNumber[i] + carry;
+                if(add == 3)
+                {
+                    sum[i] = 1;
+                    carry = 1;
+                }
+                else if(add == 2)
+                {
+                    sum[i] = 0;
+                    carry = 0;
+                }
+                else
+                {
+                    sum[i] = add;
+                    carry = 0;
+                }
+            }
+            //TODO: fix this return, Need to implement implicit conversion for Binary to Int and vice-versa
+            return new Binary(0b1010);
+        }
+        
         #region(Fields)
         #endregion
         #region(Properties)
