@@ -182,6 +182,16 @@ namespace CP
 
         #region(Binary Operators: Ones' complement, Negation)
 
+        public static Binary operator ~(Binary number)
+        {
+            return new Binary(0b1010);
+        }
+
+        public static Binary operator -(Binary number)
+        {
+            return new Binary(0b1010);
+        }
+
         #endregion
 
         #region(Binary Arithmatic Opertors: +, -, *, /)
