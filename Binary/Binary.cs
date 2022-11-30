@@ -85,11 +85,22 @@ namespace CP
             int counter = 0;
             for (int i = binaryNumber.Length - 1; i >= 0; i--)
             {
-                sum = sum + (binaryNumber[i] * Math.Pow(2, counter));
+                sum = sum + (binaryNumber[i] * this.PowerOf(2, counter));
                 counter++;
             }
             return sum;
 
+        }
+
+        public int PowerOf(int number, int power)
+        {
+            int sum = 1;
+            for(int i = 0; i < power; i++)
+            {
+                sum = number * sum;
+            }
+
+            return sum;
         }
 
         #endregion
