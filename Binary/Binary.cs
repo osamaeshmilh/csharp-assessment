@@ -35,34 +35,50 @@ namespace CP
             return new Binary(value);
         }
 
-        public Binary(int value)
+        public Binary(int intValue)
         {
-            int[] tempBinaryNumber = new int[0];
-            string binaryNumberInStringFormat = Convert.ToString(value, 2);
-            if (binaryNumberInStringFormat.Length > 16)
-            {
-                tempBinaryNumber = binaryNumberInStringFormat.Substring(16).Select(c => c - '0').ToArray();
-            }
-            else
-            {
-                tempBinaryNumber = binaryNumberInStringFormat.Select(c => c - '0').ToArray();
-            }
-            int missingBits = 16 - tempBinaryNumber.Length;
-            int counter = 0;
-            for (int i = 0; i < missingBits; i++)
-            {
-                binaryNumber[i] = 0;
-            }
-            for (int i = missingBits; i < 16; i++)
-            {
-                binaryNumber[i] = tempBinaryNumber[counter];
-                counter++;
-            }
+            //int[] tempBinaryNumber = new int[0];
+            //string binaryNumberInStringFormat = Convert.ToString(intValue, 2);
+            //if (binaryNumberInStringFormat.Length > 16)
+            //{
+            //    tempBinaryNumber = binaryNumberInStringFormat.Substring(16).Select(c => c - '0').ToArray();
+            //}
+            //else
+            //{
+            //    tempBinaryNumber = binaryNumberInStringFormat.Select(c => c - '0').ToArray();
+            //}
+            //int missingBits = 16 - tempBinaryNumber.Length;
+            //int counter = 0;
+            //for (int i = 0; i < missingBits; i++)
+            //{
+            //    binaryNumber[i] = 0;
+            //}
+            //for (int i = missingBits; i < 16; i++)
+            //{
+            //    binaryNumber[i] = tempBinaryNumber[counter];
+            //    counter++;
+            //}
+            //Console.WriteLine("1:  " + this.ToString());
+
+
+            //for (int i = 15; i >= 0; i--)
+            //    binaryNumber[i] = (intValue & (1 << i)) != 0 ? 1 : 0;
+            //Console.WriteLine("2:  " + this.ToString());
+
+            //for (int i = 0; i < 16; i++)
+            //    binaryNumber[i] = (intValue & (1 << i)) != 0 ? 1 : 0;
+            //Console.WriteLine("3:  " + this.ToString());
+
+            for (int i = 0; i < 16; i++)
+                binaryNumber[16 - 1 - i] = (intValue & (1 << i)) != 0 ? 1 : 0;
+            Console.WriteLine("4:  " + this.ToString());
+
         }
+
 
         #endregion
 
-        #region(Methods: ToDecimal, ToString)
+            #region(Methods: ToDecimal, ToString)
 
         public override string ToString()
         {
