@@ -26,6 +26,14 @@ namespace CP
         #endregion
 
         #region(Index operator)
+        public int this[int index]
+        {
+            get => GetValue(index);
+            set => SetValue(value, index);
+        }
+
+        public int GetValue(int index) => binaryNumber[index];
+        public int SetValue(int value, int index) => binaryNumber[index] = value;
         #endregion
 
         #region(Implicit Convertors: int to Binary, Binary to int)
@@ -71,7 +79,7 @@ namespace CP
 
             for (int i = 0; i < 16; i++)
                 binaryNumber[16 - 1 - i] = (intValue & (1 << i)) != 0 ? 1 : 0;
-            Console.WriteLine("4:  " + this.ToString());
+            //Console.WriteLine("4:  " + this.ToString());
 
         }
 
@@ -183,7 +191,7 @@ namespace CP
             int add = 0;
             for (int i = 15; i >= 0; i--)
             {
-                add = number1.binaryNumber[i] + number2.binaryNumber[i] + carry;
+                add = number1[i] + number2[i] + carry;
                 if (add == 3)
                 {
                     sum[i] = 1;
@@ -192,7 +200,7 @@ namespace CP
                 else if (add == 2)
                 {
                     sum[i] = 0;
-                    carry = 0;
+                    carry = 1;
                 }
                 else
                 {
