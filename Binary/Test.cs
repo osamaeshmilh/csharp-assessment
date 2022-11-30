@@ -128,46 +128,46 @@ namespace CP
             Console.WriteLine();
         }
 
-        //public static void RelationalOperatorTest()
-        //{
-        //    Console.WriteLine("----------------Relational Operator Test----------------");
+        public static void RelationalOperatorTest()
+        {
+            Console.WriteLine("----------------Relational Operator Test----------------");
 
-        //    Console.WriteLine("assigning 10 to x");
-        //    Binary x = 10;
-        //    Console.WriteLine("assigning -12 to y");
-        //    Binary y = -12;
-        //    Console.WriteLine("assigning 2 to z");
-        //    Binary z = 2;
+            Console.WriteLine("assigning 10 to x");
+            Binary x = 10;
+            Console.WriteLine("assigning -12 to y");
+            Binary y = -12;
+            Console.WriteLine("assigning 2 to z");
+            Binary z = 2;
 
-        //    Console.WriteLine("printing x (0000 0000 0000 1010): {0}", x);
-        //    Console.WriteLine("printing x in decimal (10): {0}", x.ToDecimal());
-        //    Console.WriteLine("printing y (1111 1111 1111 0100): {0}", y);
-        //    Console.WriteLine("printing y in decimal (-12): {0}", y.ToDecimal());
-        //    Console.WriteLine("printing z (0000 0000 0000 0010): {0}", z);
-        //    Console.WriteLine("printing z in decimal (2): {0}", z.ToDecimal());
+            //Console.WriteLine("printing x (0000 0000 0000 1010): {0}", x);
+            //Console.WriteLine("printing x in decimal (10): {0}", x.ToDecimal());
+            //Console.WriteLine("printing y (1111 1111 1111 0100): {0}", y);
+            //Console.WriteLine("printing y in decimal (-12): {0}", y.ToDecimal());
+            //Console.WriteLine("printing z (0000 0000 0000 0010): {0}", z);
+            //Console.WriteLine("printing z in decimal (2): {0}", z.ToDecimal());
 
-        //    Console.WriteLine("printing x == y (False): {0}", x == y);
-        //    Console.WriteLine("printing x != y (True): {0}", x != y);
-        //    Console.WriteLine("printing -x - z == y (True): {0}", -x - z == y);
+            Console.WriteLine("printing x == y (False): {0}", x == y);
+            Console.WriteLine("printing x != y (True): {0}", x != y);
+            //Console.WriteLine("printing -x - z == y (True): {0}", -x - z == y);
 
-        //    Console.WriteLine("printing x < y (False): {0}", x < y);
-        //    Console.WriteLine("printing y < x (True): {0}", y < x);
-        //    Console.WriteLine("printing x < z (False): {0}", x < z);
-        //    Console.WriteLine("printing z < x (True): {0}", z < x);
-        //    Console.WriteLine("printing -x < x + y (True): {0}", -x < x + y);
+            //Console.WriteLine("printing x < y (False): {0}", x < y);
+            //Console.WriteLine("printing y < x (True): {0}", y < x);
+            //Console.WriteLine("printing x < z (False): {0}", x < z);
+            //Console.WriteLine("printing z < x (True): {0}", z < x);
+            //Console.WriteLine("printing -x < x + y (True): {0}", -x < x + y);
 
-        //    Console.WriteLine("printing x > y (True): {0}", x > y);
-        //    Console.WriteLine("printing y > x (False): {0}", y > x);
-        //    Console.WriteLine("printing x > z (True): {0}", x > z);
-        //    Console.WriteLine("printing z > x (False): {0}", z > x);
-        //    Console.WriteLine("printing -z > x + y (False): {0}", -z > x + y);
+            //Console.WriteLine("printing x > y (True): {0}", x > y);
+            //Console.WriteLine("printing y > x (False): {0}", y > x);
+            //Console.WriteLine("printing x > z (True): {0}", x > z);
+            //Console.WriteLine("printing z > x (False): {0}", z > x);
+            //Console.WriteLine("printing -z > x + y (False): {0}", -z > x + y);
 
-        //    Console.WriteLine("printing x <= y (False): {0}", x <= y);
-        //    Console.WriteLine("printing x >= y (True): {0}", x >= y);
-        //    Console.WriteLine("printing -z <= x + y (True): {0}", -z <= x + y);
-        //    Console.WriteLine("printing -z >= x + y (True): {0}", -z >= x + y);
+            //Console.WriteLine("printing x <= y (False): {0}", x <= y);
+            //Console.WriteLine("printing x >= y (True): {0}", x >= y);
+            //Console.WriteLine("printing -z <= x + y (True): {0}", -z <= x + y);
+            //Console.WriteLine("printing -z >= x + y (True): {0}", -z >= x + y);
 
-        //    Console.WriteLine();
-        //}
+            Console.WriteLine();
+        }
     }
 }

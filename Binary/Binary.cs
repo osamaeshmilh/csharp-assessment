@@ -19,6 +19,7 @@ namespace CP
         #region(Fields)
 
         private int[] binaryNumber = new int[16];
+        bool is_negative = false;
 
         #endregion
 
@@ -76,7 +77,8 @@ namespace CP
             //for (int i = 0; i < 16; i++)
             //    binaryNumber[i] = (intValue & (1 << i)) != 0 ? 1 : 0;
             //Console.WriteLine("3:  " + this.ToString());
-
+            if (intValue < 0)
+                is_negative = true;    
             for (int i = 0; i < 16; i++)
                 binaryNumber[16 - 1 - i] = (intValue & (1 << i)) != 0 ? 1 : 0;
             //Console.WriteLine("4:  " + this.ToString());
@@ -208,6 +210,7 @@ namespace CP
                     carry = 0;
                 }
             }
+            Console.WriteLine(sum.Sum());
             //TODO: fix this return, Need to implement implicit conversion for Binary to Int and vice-versa
             return new Binary(0b1010);
         }
@@ -238,12 +241,19 @@ namespace CP
 
         public static bool operator == (Binary number1, Binary number2)
         {
+            for(int i = 0; i< 16; i++)
+            {
+                if (number1[i] != number2[i])
+                {
+                    return false;
+                }
+            }
             return true;
         }
 
-        public static bool operator !=(Binary number1, Binary number2)
+        public static bool operator != (Binary number1, Binary number2)
         {
-            return false;
+            return !(number1 == number2);
         }
 
         public static bool operator > (Binary number1, Binary number2)
