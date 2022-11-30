@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "/Users/nitish/.nuget/packages/": {}
+    "/Users/osamaeshmilh/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/nitish/SHU/computer programming/csharp-assessment/Binary/Binary.csproj",
+      "projectUniqueName": "/Users/osamaeshmilh/Study/C Sharp/Binary/Binary/Binary.csproj",
       "projectName": "Binary",
-      "projectPath": "/Users/nitish/SHU/computer programming/csharp-assessment/Binary/Binary.csproj",
-      "packagesPath": "/Users/nitish/.nuget/packages/",
-      "outputPath": "/Users/nitish/SHU/computer programming/csharp-assessment/Binary/obj/",
+      "projectPath": "/Users/osamaeshmilh/Study/C Sharp/Binary/Binary/Binary.csproj",
+      "packagesPath": "/Users/osamaeshmilh/.nuget/packages/",
+      "outputPath": "/Users/osamaeshmilh/Study/C Sharp/Binary/Binary/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/nitish/.nuget/NuGet/NuGet.Config"
+        "/Users/osamaeshmilh/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"

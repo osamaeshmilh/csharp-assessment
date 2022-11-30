@@ -15,28 +15,31 @@ namespace CP
 
     class Binary
     {
-        //TODO: Remove this X variable if not required
-        int X
-        {
-            get;
-            set;
-        }
+
+        #region(Fields)
 
         private int[] binaryNumber = new int[16];
 
+        #endregion
+
+        #region(Properties)
+        #endregion
+
+        #region(Index operator)
+        #endregion
+
+        #region(Implicit Convertors: int to Binary, Binary to int)
+
         public static implicit operator Binary(int value)
         {
-            return new Binary(value)
-            {
-                X = value
-            };
+            return new Binary(value);
         }
 
         public Binary(int value)
         {
             int[] tempBinaryNumber = new int[0];
             string binaryNumberInStringFormat = Convert.ToString(value, 2);
-            if(binaryNumberInStringFormat.Length > 16)
+            if (binaryNumberInStringFormat.Length > 16)
             {
                 tempBinaryNumber = binaryNumberInStringFormat.Substring(16).Select(c => c - '0').ToArray();
             }
@@ -56,7 +59,11 @@ namespace CP
                 counter++;
             }
         }
-        
+
+        #endregion
+
+        #region(Methods: ToDecimal, ToString)
+
         public override string ToString()
         {
             string temp = "";
@@ -71,17 +78,35 @@ namespace CP
             return temp;
         }
 
-        public static Binary operator << (Binary number, int place)
+
+        public double ToDecimal()
         {
-            int newArrayLength= number.binaryNumber.Length - place;
-            int[] tempNumber = new int[newArrayLength];
-            for(int i = place; i < number.binaryNumber.Length; i++)
+            double sum = 0;
+            int counter = 0;
+            for (int i = binaryNumber.Length - 1; i >= 0; i--)
             {
-                tempNumber[i-place] = number.binaryNumber[i];
+                sum = sum + (binaryNumber[i] * Math.Pow(2, counter));
+                counter++;
             }
-            for(int i = 0; i < 16; i++)
+            return sum;
+
+        }
+
+        #endregion
+
+        #region(Shift Opertors: Shift to left by n (<<), Shift to right by n (>>))
+
+        public static Binary operator <<(Binary number, int place)
+        {
+            int newArrayLength = number.binaryNumber.Length - place;
+            int[] tempNumber = new int[newArrayLength];
+            for (int i = place; i < number.binaryNumber.Length; i++)
             {
-                if(i >= tempNumber.Length)
+                tempNumber[i - place] = number.binaryNumber[i];
+            }
+            for (int i = 0; i < 16; i++)
+            {
+                if (i >= tempNumber.Length)
                 {
                     number.binaryNumber[i] = 0;
                 }
@@ -93,7 +118,7 @@ namespace CP
             return number;
         }
 
-        public static Binary operator >> (Binary number, int place)
+        public static Binary operator >>(Binary number, int place)
         {
             int newArrayLength = number.binaryNumber.Length - place;
             int[] tempNumber = new int[newArrayLength];
@@ -109,39 +134,35 @@ namespace CP
                 }
                 else
                 {
-                    number.binaryNumber[i] = tempNumber[i-place];
+                    number.binaryNumber[i] = tempNumber[i - place];
                 }
             }
             return number;
         }
 
-        public double ToDecimal()
-        {
-            double sum = 0;
-            int counter = 0;
-            for (int i = binaryNumber.Length - 1; i >= 0; i--)
-            {
-                sum = sum + (binaryNumber[i] * Math.Pow(2, counter));
-                counter++;
-            }
-            return sum;
 
-        }
+        #endregion
 
-        public static Binary operator + (Binary number1, Binary number2)
+        #region(Binary Operators: Ones' complement, Negation)
+
+        #endregion
+
+        #region(Binary Arithmatic Opertors: +, -, *, /)
+
+        public static Binary operator +(Binary number1, Binary number2)
         {
             int[] sum = new int[16];
             int carry = 0;
             int add = 0;
-            for(int i = 15; i>= 0; i--)
+            for (int i = 15; i >= 0; i--)
             {
                 add = number1.binaryNumber[i] + number2.binaryNumber[i] + carry;
-                if(add == 3)
+                if (add == 3)
                 {
                     sum[i] = 1;
                     carry = 1;
                 }
-                else if(add == 2)
+                else if (add == 2)
                 {
                     sum[i] = 0;
                     carry = 0;
@@ -155,24 +176,61 @@ namespace CP
             //TODO: fix this return, Need to implement implicit conversion for Binary to Int and vice-versa
             return new Binary(0b1010);
         }
-        
-        #region(Fields)
+
+        public static Binary operator -(Binary number1, Binary number2)
+        {
+            return new Binary(0b1010);
+        }
+
+        public static Binary operator /(Binary number1, Binary number2)
+        {
+            return new Binary(0b1010);
+        }
+
+        public static Binary operator *(Binary number1, Binary number2)
+        {
+            return new Binary(0b1010);
+        }
+
+        public static Binary operator %(Binary number1, Binary number2)
+        {
+            return new Binary(0b1010);
+        }
+
         #endregion
-        #region(Properties)
-        #endregion
-        #region(Index operator)
-        #endregion
-        #region(Implicit Convertors: int to Binary, Binary to int)
-        #endregion
-        #region(Methods: ToDecimal, ToString)
-        #endregion
-        #region(Shift Opertors: Shift to left by n (<<), Shift to right by n (>>))
-        #endregion
-        #region(Binary Operators: Ones' complement, Negation)
-        #endregion
-        #region(Binary Arithmatic Opertors: +, -, *, /)
-        #endregion
+
         #region(Logical Operators: ==, !=, <, >, <=, >=)
+
+        public static bool operator == (Binary number1, Binary number2)
+        {
+            return true;
+        }
+
+        public static bool operator !=(Binary number1, Binary number2)
+        {
+            return false;
+        }
+
+        public static bool operator > (Binary number1, Binary number2)
+        {
+            return false;
+        }
+
+        public static bool operator < (Binary number1, Binary number2)
+        {
+            return false;
+        }
+
+        public static bool operator >= (Binary number1, Binary number2)
+        {
+            return false;
+        }
+
+        public static bool operator <= (Binary number1, Binary number2)
+        {
+            return false;
+        }
+
         #endregion
     }
 }
