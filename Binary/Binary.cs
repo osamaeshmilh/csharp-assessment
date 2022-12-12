@@ -292,7 +292,36 @@ namespace CP
 
         public static Binary operator %(Binary number1, Binary number2)
         {
-            return new Binary(0b1010);
+            //TODO:: needs to be fixed to recive the second number as int binary array and return int binary result
+            int k = (int)number2.ToDecimal();
+            //this
+
+            int n = 16;
+            int[] pwrTwo = new int[n];
+            pwrTwo[0] = 1 % k;
+            for (int i = 1; i < n; i++)
+            {
+                pwrTwo[i] = pwrTwo[i - 1] * (2 % k);
+                pwrTwo[i] %= k;
+            }
+
+            // To store the result
+            int res = 0;
+            int x = 0, j = n - 1;
+            while (x < n)
+            {
+                // If current bit is 1
+                if (number1[x] == 1)
+                {
+                    // Add the current power of 2
+                    res += (pwrTwo[x]);
+                    res %= k;
+                }
+                x++;
+                j--;
+            }
+
+            return new Binary(res);
         }
 
         #endregion
