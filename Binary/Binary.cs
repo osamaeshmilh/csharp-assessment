@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.Metrics;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using Microsoft.VisualBasic;
@@ -39,9 +40,19 @@ namespace CP
 
         #region(Implicit Convertors: int to Binary, Binary to int)
 
-        public static implicit operator Binary(int value)
+        public static implicit operator Binary(int intValue)
         {
-            return new Binary(value);
+            return new Binary(intValue);
+        }
+
+        public static implicit operator Binary(int[] intArrayValue)
+        {
+            return new Binary(intArrayValue);
+        }
+
+        public Binary(int[] intArrayValue)
+        {
+            this.binaryNumber = intArrayValue;
         }
 
         public Binary(int intValue)
@@ -88,7 +99,7 @@ namespace CP
 
         #endregion
 
-            #region(Methods: ToDecimal, ToString)
+        #region(Methods: ToDecimal, ToString)
 
         public override string ToString()
         {
@@ -232,12 +243,38 @@ namespace CP
 
         public static Binary operator /(Binary number1, Binary number2)
         {
-            return new Binary(0b1010);
+            Console.WriteLine("shiftAmount = " + number2.ToDecimal());
+            double shiftAmount = (number2.ToDecimal() / 2.2);
+            Console.WriteLine("shiftAmount = " + shiftAmount );
+
+            Binary b = (number1 >> (int)shiftAmount);
+            Console.WriteLine("Div = " + b.ToDecimal() + " bi = " + b.ToString());
+            return b;
         }
 
         public static Binary operator *(Binary number1, Binary number2)
         {
-            return new Binary(0b1010);
+            //TODO: fix Array Size 32 => 16 s
+            int[] result = new int[32];
+
+            for (int i = 15; i >= 0; i--)
+            {
+                for (int j = 15; j >= 0; j--)
+                {
+                    int mul = (number1[i]) * (number2[j]);
+                    int p1 = i + j , p2 = i + j + 1 ;
+                    int sum = mul + result[p2];
+
+                    result[p1] += sum / 10;
+                    result[p2] = (sum) % 10;
+                }
+            }
+            return new Binary(result);
+        }
+
+        private void setIntArrayValue(int[] result)
+        {
+            this.binaryNumber = result;
         }
 
         public static Binary operator %(Binary number1, Binary number2)

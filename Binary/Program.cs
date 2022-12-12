@@ -3,5 +3,5 @@ using CP;
 
 //Test.ShiftOperatorTest();
 //Test.UnayOperatorTest();
-//Test.ArithmeticOperatorTest();
-Test.RelationalOperatorTest();
+Test.ArithmeticOperatorTest();
+//Test.RelationalOperatorTest();
