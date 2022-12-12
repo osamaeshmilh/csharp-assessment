@@ -238,7 +238,20 @@ namespace CP
 
         public static Binary operator -(Binary number1, Binary number2)
         {
-            return new Binary(0b1010);
+            int[] subtarctBin = new int[16];
+            int carry = 0;
+            for (int i = 0; i < 16; i++)
+            {
+                subtarctBin[i] = 0;
+            }
+            for (int i = 15; i >= 0; i--)
+            {
+                int subtract = number1[i] - number2[i] - carry;
+                subtarctBin[i] = subtract % 2;
+                carry = subtract / 2;
+            }
+
+            return new Binary(subtarctBin);
         }
 
         public static Binary operator /(Binary number1, Binary number2)

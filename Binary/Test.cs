@@ -70,8 +70,8 @@ namespace CP
             Console.WriteLine("printing x + y (1111 1111 1111 1110): {0}", x + y);
             //Console.WriteLine("printing x + y in decimal (-2): {0}", (x + y).ToDecimal());
 
-            //Console.WriteLine("printing x - y (0000 0000 0001 0110): {0}", x - y);
-            //Console.WriteLine("printing x - y in decimal (22): {0}", (x - y).ToDecimal());
+            Console.WriteLine("printing x - y (0000 0000 0001 0110): {0}", x - y);
+            Console.WriteLine("printing x - y in decimal (22): {0}", (x - y).ToDecimal());
 
             x = 10; y = 3;
 
