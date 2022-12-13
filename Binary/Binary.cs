@@ -112,13 +112,6 @@ namespace CP
             return sum;
         }
 
-        public static int[] SubArray(int[] binary, int index, int length)
-        {
-            int[] result = new int[length];
-            Array.Copy(binary, index, result, 0, length);
-            return result;
-        }
-
         #endregion
 
         #region(Shift Opertors: Shift to left by n (<<), Shift to right by n (>>))
@@ -244,53 +237,7 @@ namespace CP
 
         public static Binary operator *(Binary number1, Binary number2)
         {
-            //TODO: fix Array Size 32 => 16 s
-            int[] result = new int[32];
-            bool n1Negative = false;
-            bool n2Negative = false;
-
-            if (number1.is_negative)
-            {
-                n1Negative = true;
-                number1 = -number1;
-            }
-
-            if (number2.is_negative)
-            {
-                n1Negative = true;
-                number2 = -number2;
-            }
-
-            for (int i = 15; i >= 0; i--)
-            {
-                for (int j = 15; j >= 0; j--)
-                {
-                    int mul = (number1[i]) * (number2[j]);
-                    int p1 = i + j, p2 = i + j + 1;
-                    int sum = mul + result[p2];
-
-                    result[p1] += sum / 10;
-                    result[p2] = (sum) % 10;
-                }
-            }
-
-            if ((n1Negative && n2Negative) || (!n1Negative && !n2Negative))
-            {
-                //TODO :: Both Negative or Both Positive result is positive
-                Console.WriteLine("Hew");
-                return new Binary(SubArray(result, 15, 16));
-            }
-            else
-            {
-                Console.WriteLine("ddddd");
-                
-
-                Binary binary = new Binary(SubArray(result, 16, 16));
-                binary = -binary;
-                binary.is_negative = true;
-                return binary;
-            }
-
+            return new Binary(0b0101);
         }
 
         public static Binary operator %(Binary number1, Binary number2)
