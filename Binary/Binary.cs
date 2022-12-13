@@ -254,11 +254,6 @@ namespace CP
             return result;
         }
 
-        private void setIntArrayValue(int[] result)
-        {
-            this.binaryNumber = result;
-        }
-
         public static Binary operator %(Binary number1, Binary number2)
         {
             //TODO:: needs to be fixed to recive the second number as int binary array and return int binary result
