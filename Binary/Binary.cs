@@ -84,14 +84,22 @@ namespace CP
 
         public double ToDecimal()
         {
+            Binary b = binaryNumber;
+            Binary One = 0b0001;
+            if (binaryNumber[0] == 1)
+            {
+                b.is_negative = true;
+                b = ~b;
+                b += One;
+            }
             double sum = 0;
             int counter = 0;
-            for (int i = binaryNumber.Length - 1; i >= 0; i--)
+            for (int i = b.binaryNumber.Length - 1; i >= 0; i--)
             {
-                sum = sum + (binaryNumber[i] * this.PowerOf(2, counter));
+                sum = sum + (b[i] * this.PowerOf(2, counter));
                 counter++;
             }
-            return sum;
+            return binaryNumber[0] == 1 ? -sum : sum;
 
         }
 
@@ -161,12 +169,21 @@ namespace CP
 
         public static Binary operator ~(Binary number)
         {
-            return new Binary(0b1010);
+            Binary oneComplement = new Binary(0);
+            for(int i = 0;  i < number.binaryNumber.Length; i++)
+            {
+                oneComplement[i] = number.binaryNumber[i] == 1 ? 0 : 1;
+            }
+            return oneComplement;
         }
 
         public static Binary operator -(Binary number)
         {
-            return new Binary(0b1010);
+            Binary b = number;
+            Binary One = 0b0001;
+            b = ~b;
+            b += One;
+            return b;
         }
 
         #endregion
@@ -197,9 +214,7 @@ namespace CP
                     carry = 0;
                 }
             }
-            Console.WriteLine(sum.Sum());
-            //TODO: fix this return, Need to implement implicit conversion for Binary to Int and vice-versa
-            return new Binary(0b1010);
+            return new Binary(sum);
         }
 
         public static Binary operator -(Binary number1, Binary number2)
