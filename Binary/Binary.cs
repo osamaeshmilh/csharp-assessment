@@ -328,22 +328,46 @@ namespace CP
 
         public static bool operator > (Binary number1, Binary number2)
         {
-            return false;
+            if (number1[0] != 1 && number2[0] == 1)
+            {
+                return true;
+            }
+            else if (number1[0] == 1 && number2[0] != 1)
+            {
+                return false;
+            }
+            int count = 0;
+            for(int i = 0; i < 16; i++)
+            {
+                if(number1[i] > number2[i])
+                {
+                    count++;
+                }
+                else if(number1[i] < number2[i])
+                {
+                    count--;
+                }
+            }
+            return count > 0 ? true : false;
         }
 
         public static bool operator < (Binary number1, Binary number2)
         {
-            return false;
+            return !(number1 > number2);
         }
 
         public static bool operator >= (Binary number1, Binary number2)
         {
-            return false;
+            bool equal = number1 == number2;
+            bool greater = number1 > number2;
+            return equal || greater;
         }
 
         public static bool operator <= (Binary number1, Binary number2)
         {
-            return false;
+            bool equal = number1 == number2;
+            bool lessThan = number1 < number2;
+            return equal || lessThan;
         }
 
         #endregion
