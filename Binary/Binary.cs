@@ -237,7 +237,26 @@ namespace CP
 
         public static Binary operator *(Binary number1, Binary number2)
         {
-            return new Binary(0b0101);
+            Binary multiply = 0b0000; // Default value 0
+            Binary result = 0b0000; // Default value 0
+            int counter = 0;
+            for(int i = number2.binaryNumber.Length -1;  i>= 0; i--)
+            {
+                for(int j = number1.binaryNumber.Length -1; j>= 0; j-- )
+                {
+                    if (j - counter < 0)
+                        break;
+                    multiply[j-counter] = number2[i] * number1[j];
+                }
+                counter++;
+                result+= multiply;
+            }
+            return result;
+        }
+
+        private void setIntArrayValue(int[] result)
+        {
+            this.binaryNumber = result;
         }
 
         public static Binary operator %(Binary number1, Binary number2)
