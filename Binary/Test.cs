@@ -60,68 +60,68 @@ namespace CP
             Console.WriteLine("assigning -12 to y");
             Binary y = -12;
 
-            Console.WriteLine("printing x (0000 0000 0000 1010): {0}", x);
-            Console.WriteLine("printing x in decimal (10): {0}", x.ToDecimal());
-            Console.WriteLine("printing y (1111 1111 1111 0100): {0}", y);
-            Console.WriteLine("printing y in decimal (-12): {0}", y.ToDecimal());
+            //Console.WriteLine("printing x (0000 0000 0000 1010): {0}", x);
+            //Console.WriteLine("printing x in decimal (10): {0}", x.ToDecimal());
+            //Console.WriteLine("printing y (1111 1111 1111 0100): {0}", y);
+            //Console.WriteLine("printing y in decimal (-12): {0}", y.ToDecimal());
 
-            Console.WriteLine("printing x + y (1111 1111 1111 1110): {0}", x + y);
-            Console.WriteLine("printing x + y in decimal (-2): {0}", (x + y).ToDecimal());
+            //Console.WriteLine("printing x + y (1111 1111 1111 1110): {0}", x + y);
+            //Console.WriteLine("printing x + y in decimal (-2): {0}", (x + y).ToDecimal());
 
-            Console.WriteLine("printing x - y (0000 0000 0001 0110): {0}", x - y);
-            Console.WriteLine("printing x - y in decimal (22): {0}", (x - y).ToDecimal());
+            //Console.WriteLine("printing x - y (0000 0000 0001 0110): {0}", x - y);
+            //Console.WriteLine("printing x - y in decimal (22): {0}", (x - y).ToDecimal());
 
             Console.WriteLine("printing x * y (1111 1111 1000 1000): {0}", x * y);
             Console.WriteLine("printing x * y in decimal (-120): {0}", (x * y).ToDecimal());
 
-            Console.WriteLine("printing -x * y (0000 0000 0111 1000): {0}", -x * y);
-            Console.WriteLine("printing -x * y in decimal (120): {0}", (-x * y).ToDecimal());
+            //Console.WriteLine("printing -x * y (0000 0000 0111 1000): {0}", -x * y);
+            //Console.WriteLine("printing -x * y in decimal (120): {0}", (-x * y).ToDecimal());
 
-            x = 10; y = 3;
-            Console.WriteLine("printing x / y (0000 0000 0000 0011): {0}", x / y);
-            Console.WriteLine("printing x / y in decimal (3): {0}", (x / y).ToDecimal());
-            Console.WriteLine("printing x % y (0000 0000 0000 0001): {0}", x % y);
-            Console.WriteLine("printing x / y in decimal (1): {0}", (x % y).ToDecimal());
-            x = 10; y = -3;
-            Console.WriteLine("printing x / y (1111 1111 1111 1101): {0}", x / y);
-            Console.WriteLine("printing x / y in decimal (-3): {0}", (x / y).ToDecimal());
-            Console.WriteLine("printing x % y (0000 0000 0000 0001): {0}", x % y);
-            Console.WriteLine("printing x / y in decimal (1): {0}", (x % y).ToDecimal());
+            //x = 10; y = 3;
+            //Console.WriteLine("printing x / y (0000 0000 0000 0011): {0}", x / y);
+            //Console.WriteLine("printing x / y in decimal (3): {0}", (x / y).ToDecimal());
+            //Console.WriteLine("printing x % y (0000 0000 0000 0001): {0}", x % y);
+            //Console.WriteLine("printing x / y in decimal (1): {0}", (x % y).ToDecimal());
+            //x = 10; y = -3;
+            //Console.WriteLine("printing x / y (1111 1111 1111 1101): {0}", x / y);
+            //Console.WriteLine("printing x / y in decimal (-3): {0}", (x / y).ToDecimal());
+            //Console.WriteLine("printing x % y (0000 0000 0000 0001): {0}", x % y);
+            //Console.WriteLine("printing x / y in decimal (1): {0}", (x % y).ToDecimal());
 
-            x = -10; y = 3;
-            Console.WriteLine("printing x / y (1111 1111 1111 1101): {0}", x / y);
-            Console.WriteLine("printing x / y in decimal (-3): {0}", (x / y).ToDecimal());
-            Console.WriteLine("printing x % y (1111 1111 1111 1111): {0}", x % y);
-            Console.WriteLine("printing x / y in decimal (-1): {0}", (x % y).ToDecimal());
+            //x = -10; y = 3;
+            //Console.WriteLine("printing x / y (1111 1111 1111 1101): {0}", x / y);
+            //Console.WriteLine("printing x / y in decimal (-3): {0}", (x / y).ToDecimal());
+            //Console.WriteLine("printing x % y (1111 1111 1111 1111): {0}", x % y);
+            //Console.WriteLine("printing x / y in decimal (-1): {0}", (x % y).ToDecimal());
 
-            x = -10; y = -3;
-            Console.WriteLine("printing x / y (0000 0000 0000 0011): {0}", x / y);
-            Console.WriteLine("printing x / y in decimal (3): {0}", (x / y).ToDecimal());
-            Console.WriteLine("printing x % y (1111 1111 1111 1111): {0}", x % y);
-            Console.WriteLine("printing x / y in decimal (-1): {0}", (x % y).ToDecimal());
+            //x = -10; y = -3;
+            //Console.WriteLine("printing x / y (0000 0000 0000 0011): {0}", x / y);
+            //Console.WriteLine("printing x / y in decimal (3): {0}", (x / y).ToDecimal());
+            //Console.WriteLine("printing x % y (1111 1111 1111 1111): {0}", x % y);
+            //Console.WriteLine("printing x / y in decimal (-1): {0}", (x % y).ToDecimal());
 
-            x = 135; y = 62;
-            Console.WriteLine("printing x / y (0000 0000 0000 0010): {0}", x / y);
-            Console.WriteLine("printing x / y in decimal (2): {0}", (x / y).ToDecimal());
-            Console.WriteLine("printing x % y (0000 0000 0000 1011): {0}", x % y);
-            Console.WriteLine("printing x / y in decimal (11): {0}", (x % y).ToDecimal());
-            x = 135; y = -62;
-            Console.WriteLine("printing x / y (1111 1111 1111 1110): {0}", x / y);
-            Console.WriteLine("printing x / y in decimal (-2): {0}", (x / y).ToDecimal());
-            Console.WriteLine("printing x % y (0000 0000 0000 1011): {0}", x % y);
-            Console.WriteLine("printing x / y in decimal (11): {0}", (x % y).ToDecimal());
+            //x = 135; y = 62;
+            //Console.WriteLine("printing x / y (0000 0000 0000 0010): {0}", x / y);
+            //Console.WriteLine("printing x / y in decimal (2): {0}", (x / y).ToDecimal());
+            //Console.WriteLine("printing x % y (0000 0000 0000 1011): {0}", x % y);
+            //Console.WriteLine("printing x / y in decimal (11): {0}", (x % y).ToDecimal());
+            //x = 135; y = -62;
+            //Console.WriteLine("printing x / y (1111 1111 1111 1110): {0}", x / y);
+            //Console.WriteLine("printing x / y in decimal (-2): {0}", (x / y).ToDecimal());
+            //Console.WriteLine("printing x % y (0000 0000 0000 1011): {0}", x % y);
+            //Console.WriteLine("printing x / y in decimal (11): {0}", (x % y).ToDecimal());
 
-            x = -135; y = 62;
-            Console.WriteLine("printing x / y (1111 1111 1111 1110): {0}", x / y);
-            Console.WriteLine("printing x / y in decimal (-2): {0}", (x / y).ToDecimal());
-            Console.WriteLine("printing x % y (1111 1111 1111 0101): {0}", x % y);
-            Console.WriteLine("printing x / y in decimal (-11): {0}", (x % y).ToDecimal());
+            //x = -135; y = 62;
+            //Console.WriteLine("printing x / y (1111 1111 1111 1110): {0}", x / y);
+            //Console.WriteLine("printing x / y in decimal (-2): {0}", (x / y).ToDecimal());
+            //Console.WriteLine("printing x % y (1111 1111 1111 0101): {0}", x % y);
+            //Console.WriteLine("printing x / y in decimal (-11): {0}", (x % y).ToDecimal());
 
-            x = -135; y = -62;
-            Console.WriteLine("printing x / y (0000 0000 0000 0010): {0}", x / y);
-            Console.WriteLine("printing x / y in decimal (2): {0}", (x / y).ToDecimal());
-            Console.WriteLine("printing x % y (1111 1111 1111 0101): {0}", x % y);
-            Console.WriteLine("printing x / y in decimal (-11): {0}", (x % y).ToDecimal());
+            //x = -135; y = -62;
+            //Console.WriteLine("printing x / y (0000 0000 0000 0010): {0}", x / y);
+            //Console.WriteLine("printing x / y in decimal (2): {0}", (x / y).ToDecimal());
+            //Console.WriteLine("printing x % y (1111 1111 1111 0101): {0}", x % y);
+            //Console.WriteLine("printing x / y in decimal (-11): {0}", (x % y).ToDecimal());
 
             Console.WriteLine();
         }
