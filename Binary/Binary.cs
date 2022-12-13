@@ -219,31 +219,22 @@ namespace CP
 
         public static Binary operator -(Binary number1, Binary number2)
         {
-            int[] subtarctBin = new int[16];
-            int carry = 0;
-            for (int i = 0; i < 16; i++)
-            {
-                subtarctBin[i] = 0;
-            }
-            for (int i = 15; i >= 0; i--)
-            {
-                int subtract = number1[i] - number2[i] - carry;
-                subtarctBin[i] = subtract % 2;
-                carry = subtract / 2;
-            }
-
-            return new Binary(subtarctBin);
+            Binary n1 = number1;
+            Binary n2 = number2;
+            n2= ~n2;
+            n2 += 0b0001;
+            return n1 + n2;
         }
 
         public static Binary operator /(Binary number1, Binary number2)
         {
-            Console.WriteLine("shiftAmount = " + number2.ToDecimal());
-            double shiftAmount = (number2.ToDecimal() / 2.2);
-            Console.WriteLine("shiftAmount = " + shiftAmount );
+            //Console.WriteLine("shiftAmount = " + number2.ToDecimal());
+            //double shiftAmount = (number2.ToDecimal() / 2.2);
+            //Console.WriteLine("shiftAmount = " + shiftAmount );
 
-            Binary b = (number1 >> (int)shiftAmount);
-            Console.WriteLine("Div = " + b.ToDecimal() + " bi = " + b.ToString());
-            return b;
+            //Binary b = (number1 >> (int)shiftAmount);
+            //Console.WriteLine("Div = " + b.ToDecimal() + " bi = " + b.ToString());
+            return 0b1010;
         }
 
         public static Binary operator *(Binary number1, Binary number2)
