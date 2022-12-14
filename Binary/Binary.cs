@@ -17,7 +17,8 @@ namespace CP
 
         #region(Fields)
 
-        private int[] binaryNumber = new int[16];
+        const int ArrayLength = 16;
+        private int[] binaryNumber = new int[ArrayLength];
         bool is_negative = false;
 
         #endregion
@@ -57,8 +58,8 @@ namespace CP
         {
             if (intValue < 0)
                 is_negative = true;    
-            for (int i = 0; i < 16; i++)
-                binaryNumber[16 - 1 - i] = (intValue & (1 << i)) != 0 ? 1 : 0;
+            for (int i = 0; i < ArrayLength; i++)
+                binaryNumber[ArrayLength - 1 - i] = (intValue & (1 << i)) != 0 ? 1 : 0;
         }
 
         #endregion
@@ -68,7 +69,7 @@ namespace CP
         public override string ToString()
         {
             string temp = "";
-            for (int i = 0; i < binaryNumber.Length; i++)
+            for (int i = 0; i < ArrayLength; i++)
             {
                 if (i != 0 && i % 4 == 0)
                 {
@@ -92,7 +93,7 @@ namespace CP
             }
             double sum = 0;
             int counter = 0;
-            for (int i = b.binaryNumber.Length - 1; i >= 0; i--)
+            for (int i = ArrayLength - 1; i >= 0; i--)
             {
                 sum = sum + (b[i] * this.PowerOf(2, counter));
                 counter++;
@@ -118,13 +119,13 @@ namespace CP
 
         public static Binary operator <<(Binary number, int place)
         {
-            int newArrayLength = number.binaryNumber.Length - place;
+            int newArrayLength = ArrayLength - place;
             int[] tempNumber = new int[newArrayLength];
-            for (int i = place; i < number.binaryNumber.Length; i++)
+            for (int i = place; i < ArrayLength; i++)
             {
                 tempNumber[i - place] = number.binaryNumber[i];
             }
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < ArrayLength; i++)
             {
                 if (i >= tempNumber.Length)
                 {
@@ -140,13 +141,13 @@ namespace CP
 
         public static Binary operator >>(Binary number, int place)
         {
-            int newArrayLength = number.binaryNumber.Length - place;
+            int newArrayLength = ArrayLength - place;
             int[] tempNumber = new int[newArrayLength];
             for (int i = 0; i < newArrayLength; i++)
             {
                 tempNumber[i] = number.binaryNumber[i];
             }
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < ArrayLength; i++)
             {
                 if (i < place)
                 {
@@ -168,7 +169,7 @@ namespace CP
         public static Binary operator ~(Binary number)
         {
             Binary oneComplement = new Binary(0);
-            for(int i = 0;  i < number.binaryNumber.Length; i++)
+            for(int i = 0;  i < ArrayLength; i++)
             {
                 oneComplement[i] = number.binaryNumber[i] == 1 ? 0 : 1;
             }
@@ -190,7 +191,7 @@ namespace CP
 
         public static Binary operator +(Binary number1, Binary number2)
         {
-            int[] sum = new int[16];
+            int[] sum = new int[ArrayLength];
             int carry = 0;
             int add = 0;
             for (int i = 15; i >= 0; i--)
@@ -226,36 +227,36 @@ namespace CP
 
         public static Binary operator /(Binary numberOneBinary, Binary numberTwoBinary)
         {
-            Binary divisor = new int[numberOneBinary.binaryNumber.Length * 2];
-            Binary tempRemainder = new int[numberTwoBinary.binaryNumber.Length * 2];//Initialized with dividend
-            Binary tempQuotient = new int[numberOneBinary.binaryNumber.Length];
-            Binary remainder = new int[numberTwoBinary.binaryNumber.Length * 2];
-            Binary quotient = new int[numberOneBinary.binaryNumber.Length];
+            Binary divisor = new Binary(new int[ArrayLength * 2]);
+            Binary tempRemainder =  new Binary(new int[ArrayLength * 2]);//Initialized with dividend
+            Binary tempQuotient = new Binary(new int[ArrayLength]);
+            int[] remainder = new int[ArrayLength * 2];
+            int[] quotient = new int[ArrayLength];
 
-            for (int i = (numberOneBinary.binaryNumber.Length * 2) - 1; i >= 0; i--)
+            for (int i = (ArrayLength * 2) - 1; i >= 0; i--)
             {
                 divisor[i] = 0;
                 tempRemainder[i] = 0;
             }
-            for (int i = 0; i < numberOneBinary.binaryNumber.Length; i++)
+            for (int i = 0; i < ArrayLength; i++)
             {
-                tempRemainder[i + numberOneBinary.binaryNumber.Length] = numberOneBinary[i];
+                tempRemainder[i + ArrayLength] = numberOneBinary[i];
                 tempQuotient[i] = 0;
                 divisor[i] = numberTwoBinary[i];
             }
 
-            for (int j = 0; j <= numberOneBinary.binaryNumber.Length; j++)
+            for (int j = 0; j <= ArrayLength; j++)
             {
                 tempRemainder = tempRemainder - divisor;
                 //if(!tempRemainder[0])
                 if (tempRemainder[0] == 0)
                 {
                     //shift quotient left and set rightmost bit to 1
-                    for (int i = 0; i < numberOneBinary.binaryNumber.Length - 1; i++)
+                    for (int i = 0; i < ArrayLength - 1; i++)
                     {
                         tempQuotient[i] = tempQuotient[i + 1];
                     }
-                    tempQuotient[numberOneBinary.binaryNumber.Length - 1] = 1;
+                    tempQuotient[ArrayLength - 1] = 1;
                 }
                 else
                 {
@@ -266,11 +267,11 @@ namespace CP
                 //divisor = shiftRight(divisor);
                 divisor = divisor >> 1;
             }
-            for (int i = tempRemainder.binaryNumber.Length - 1; i >= 0; i--)
+            for (int i = ArrayLength - 1; i >= 0; i--)
             {
                 remainder[i] = tempRemainder[i];
             }
-            for (int i = tempQuotient.binaryNumber.Length - 1; i >= 0; i--)
+            for (int i = ArrayLength - 1; i >= 0; i--)
             {
                 quotient[i] = tempQuotient[i];
             }
@@ -283,9 +284,9 @@ namespace CP
             Binary multiply = 0b0000; // Default value 0
             Binary result = 0b0000; // Default value 0
             int counter = 0;
-            for(int i = number2.binaryNumber.Length -1;  i>= 0; i--)
+            for(int i = ArrayLength - 1;  i>= 0; i--)
             {
-                for(int j = number1.binaryNumber.Length -1; j>= 0; j-- )
+                for(int j = ArrayLength - 1; j>= 0; j-- )
                 {
                     if (j - counter < 0)
                         break;
@@ -303,7 +304,7 @@ namespace CP
             int k = (int)number2.ToDecimal();
             //this
 
-            int n = 16;
+            int n = ArrayLength;
             int[] pwrTwo = new int[n];
             pwrTwo[0] = 1 % k;
             for (int i = 1; i < n; i++)
@@ -337,7 +338,7 @@ namespace CP
 
         public static bool operator == (Binary number1, Binary number2)
         {
-            for(int i = 0; i< 16; i++)
+            for(int i = 0; i< ArrayLength; i++)
             {
                 if (number1[i] != number2[i])
                 {
@@ -363,7 +364,7 @@ namespace CP
                 return false;
             }
             int count = 0;
-            for(int i = 0; i < 16; i++)
+            for(int i = 0; i < ArrayLength; i++)
             {
                 if(number1[i] > number2[i])
                 {
