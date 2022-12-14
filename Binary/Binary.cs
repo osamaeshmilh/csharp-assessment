@@ -17,9 +17,10 @@ namespace CP
 
         #region(Fields)
 
+        //Constant for the integer array length of 16 to be used in the class
         const int ArrayLength = 16;
-        private int[] binaryNumber = new int[ArrayLength];
-        bool is_negative = false;
+        //the binary array using 16 integer array to store 0 and 1 bits
+        private int[] binaryNumberArray = new int[ArrayLength];
 
         #endregion
 
@@ -27,23 +28,26 @@ namespace CP
         #endregion
 
         #region(Index operator)
+
+        //index operator to access the int[] array in the class Ex: Binary binary[1];
         public int this[int index]
         {
             get => GetValue(index);
             set => SetValue(value, index);
         }
 
-        public int GetValue(int index) => binaryNumber[index];
-        public int SetValue(int value, int index) => binaryNumber[index] = value;
+        public int GetValue(int index) => binaryNumberArray[index];
+        public int SetValue(int value, int index) => binaryNumberArray[index] = value;
         #endregion
 
         #region(Implicit Convertors: int to Binary, Binary to int)
-
+        //Binary implicit Convertors to convert and store int values in int array Ex: Binary binary = 23;
         public static implicit operator Binary(int intValue)
         {
             return new Binary(intValue);
         }
 
+        //Binary implicit Convertors to store int array value Ex: Binary binary = new int[16];
         public static implicit operator Binary(int[] intArrayValue)
         {
             return new Binary(intArrayValue);
@@ -51,15 +55,15 @@ namespace CP
 
         public Binary(int[] intArrayValue)
         {
-            this.binaryNumber = intArrayValue;
+            this.binaryNumberArray = intArrayValue;
         }
 
         public Binary(int intValue)
         {
-            if (intValue < 0)
-                is_negative = true;    
+            //for loop for 16 bit as identified in ArrayLength Const
+            //to get decimal intValue binary implementation using AND operator with one shifted by bit location
             for (int i = 0; i < ArrayLength; i++)
-                binaryNumber[ArrayLength - 1 - i] = (intValue & (1 << i)) != 0 ? 1 : 0;
+                binaryNumberArray[ArrayLength - 1 - i] = (intValue & (1 << i)) != 0 ? 1 : 0;
         }
 
         #endregion
@@ -68,37 +72,38 @@ namespace CP
 
         public override string ToString()
         {
-            string temp = "";
+            string binaryString = "";
+            //for loop through the binaryArray
             for (int i = 0; i < ArrayLength; i++)
             {
+                //adding space after every four bits
                 if (i != 0 && i % 4 == 0)
-                {
-                    temp += " ";
-                }
-                temp += binaryNumber[i];
+                    binaryString += " ";
+                //Appending Bits
+                binaryString += binaryNumberArray[i];
             }
-            return temp;
+            return binaryString;
         }
 
 
         public double ToDecimal()
         {
-            Binary b = binaryNumber;
-            Binary One = 0b0001;
-            if (binaryNumber[0] == 1)
+            Binary binary = binaryNumberArray;
+            //checking if the binaryNumberArray starts with one if yes it means it is a negative number
+            if (binaryNumberArray[0] == 1)
             {
-                b.is_negative = true;
-                b = ~b;
-                b += One;
+                //taking the two's complement
+                binary = -binary;
             }
             double sum = 0;
             int counter = 0;
+            //for loop to take power of bits location if they were one's
             for (int i = ArrayLength - 1; i >= 0; i--)
             {
-                sum = sum + (b[i] * this.PowerOf(2, counter));
+                sum = sum + (binary[i] * this.PowerOf(2, counter));
                 counter++;
             }
-            return binaryNumber[0] == 1 ? -sum : sum;
+            return binaryNumberArray[0] == 1 ? -sum : sum;
 
         }
 
@@ -106,10 +111,7 @@ namespace CP
         {
             int sum = 1;
             for(int i = 0; i < power; i++)
-            {
                 sum = number * sum;
-            }
-
             return sum;
         }
 
@@ -123,17 +125,17 @@ namespace CP
             int[] tempNumber = new int[newArrayLength];
             for (int i = place; i < ArrayLength; i++)
             {
-                tempNumber[i - place] = number.binaryNumber[i];
+                tempNumber[i - place] = number.binaryNumberArray[i];
             }
             for (int i = 0; i < ArrayLength; i++)
             {
                 if (i >= tempNumber.Length)
                 {
-                    number.binaryNumber[i] = 0;
+                    number.binaryNumberArray[i] = 0;
                 }
                 else
                 {
-                    number.binaryNumber[i] = tempNumber[i];
+                    number.binaryNumberArray[i] = tempNumber[i];
                 }
             }
             return number;
@@ -145,17 +147,17 @@ namespace CP
             int[] tempNumber = new int[newArrayLength];
             for (int i = 0; i < newArrayLength; i++)
             {
-                tempNumber[i] = number.binaryNumber[i];
+                tempNumber[i] = number.binaryNumberArray[i];
             }
             for (int i = 0; i < ArrayLength; i++)
             {
                 if (i < place)
                 {
-                    number.binaryNumber[i] = 0;
+                    number.binaryNumberArray[i] = 0;
                 }
                 else
                 {
-                    number.binaryNumber[i] = tempNumber[i - place];
+                    number.binaryNumberArray[i] = tempNumber[i - place];
                 }
             }
             return number;
@@ -171,7 +173,7 @@ namespace CP
             Binary oneComplement = new Binary(0);
             for(int i = 0;  i < ArrayLength; i++)
             {
-                oneComplement[i] = number.binaryNumber[i] == 1 ? 0 : 1;
+                oneComplement[i] = number.binaryNumberArray[i] == 1 ? 0 : 1;
             }
             return oneComplement;
         }
@@ -284,6 +286,7 @@ namespace CP
             Binary multiply = 0b0000; // Default value 0
             Binary result = 0b0000; // Default value 0
             int counter = 0;
+            //nested for loops to multiply all bits of both numbers
             for(int i = ArrayLength - 1;  i>= 0; i--)
             {
                 for(int j = ArrayLength - 1; j>= 0; j-- )
@@ -335,7 +338,6 @@ namespace CP
         #endregion
 
         #region(Logical Operators: ==, !=, <, >, <=, >=)
-
         public static bool operator == (Binary number1, Binary number2)
         {
             for(int i = 0; i< ArrayLength; i++)
