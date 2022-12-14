@@ -224,15 +224,58 @@ namespace CP
             return n1 + n2;
         }
 
-        public static Binary operator /(Binary number1, Binary number2)
+        public static Binary operator /(Binary numberOneBinary, Binary numberTwoBinary)
         {
-            //Console.WriteLine("shiftAmount = " + number2.ToDecimal());
-            //double shiftAmount = (number2.ToDecimal() / 2.2);
-            //Console.WriteLine("shiftAmount = " + shiftAmount );
+            Binary divisor = new int[numberOneBinary.binaryNumber.Length * 2];
+            Binary tempRemainder = new int[numberTwoBinary.binaryNumber.Length * 2];//Initialized with dividend
+            Binary tempQuotient = new int[numberOneBinary.binaryNumber.Length];
+            Binary remainder = new int[numberTwoBinary.binaryNumber.Length * 2];
+            Binary quotient = new int[numberOneBinary.binaryNumber.Length];
 
-            //Binary b = (number1 >> (int)shiftAmount);
-            //Console.WriteLine("Div = " + b.ToDecimal() + " bi = " + b.ToString());
-            return 0b1010;
+            for (int i = (numberOneBinary.binaryNumber.Length * 2) - 1; i >= 0; i--)
+            {
+                divisor[i] = 0;
+                tempRemainder[i] = 0;
+            }
+            for (int i = 0; i < numberOneBinary.binaryNumber.Length; i++)
+            {
+                tempRemainder[i + numberOneBinary.binaryNumber.Length] = numberOneBinary[i];
+                tempQuotient[i] = 0;
+                divisor[i] = numberTwoBinary[i];
+            }
+
+            for (int j = 0; j <= numberOneBinary.binaryNumber.Length; j++)
+            {
+                tempRemainder = tempRemainder - divisor;
+                //if(!tempRemainder[0])
+                if (tempRemainder[0] == 0)
+                {
+                    //shift quotient left and set rightmost bit to 1
+                    for (int i = 0; i < numberOneBinary.binaryNumber.Length - 1; i++)
+                    {
+                        tempQuotient[i] = tempQuotient[i + 1];
+                    }
+                    tempQuotient[numberOneBinary.binaryNumber.Length - 1] = 1;
+                }
+                else
+                {
+                    tempRemainder = tempRemainder + divisor;
+                    //tempQuotient = shiftLeft(tempQuotient);
+                    tempQuotient = tempQuotient << 1;
+                }
+                //divisor = shiftRight(divisor);
+                divisor = divisor >> 1;
+            }
+            for (int i = tempRemainder.binaryNumber.Length - 1; i >= 0; i--)
+            {
+                remainder[i] = tempRemainder[i];
+            }
+            for (int i = tempQuotient.binaryNumber.Length - 1; i >= 0; i--)
+            {
+                quotient[i] = tempQuotient[i];
+            }
+            return quotient;
+
         }
 
         public static Binary operator *(Binary number1, Binary number2)
