@@ -38,7 +38,7 @@ namespace CP
             this.binaryNumberArray = intArrayValue;
         }
 
-        public int PowerOf(int number, int power)
+        public static int PowerOf(int number, int power)
         {
             int sum = 1;
             for (int i = 0; i < power; i++)
@@ -46,9 +46,9 @@ namespace CP
             return sum;
         }
 
-        public static Dictionary<string, Binary> divide(Binary numberOneBinary, Binary numberTwoBinary)
+        public static Binary divide(Binary numberOneBinary, Binary numberTwoBinary, string requiredOutput = "remainder")
         {
-            Dictionary<string, Binary> result = new Dictionary<string, Binary>();
+            //Dictionary<string, Binary> result = new Dictionary<string, Binary>();
             // Converting negative numbers into positive
             Binary numberOnePositive = numberOneBinary[0] == 1 ? -numberOneBinary : numberOneBinary;
             Binary numberTwoPositive = numberTwoBinary[0] == 1 ? -numberTwoBinary : numberTwoBinary;
@@ -61,9 +61,7 @@ namespace CP
                 remainder = TwoComplement + remainder;
                 quotient += 0b0001; // Adding 1 to quotient
             } while (remainder > numberTwoPositive); // Running loop till remainder is greater than second number
-            result["quotient"] = quotient;
-            result["remainder"] = remainder;
-            return result;
+            return requiredOutput == "quotient" ? quotient : remainder;
         }
         #endregion
 
@@ -91,6 +89,26 @@ namespace CP
         public static implicit operator Binary(int[] intArrayValue)
         {
             return new Binary(intArrayValue);
+        }
+
+        public static implicit operator int(Binary binaryNumber)
+        {
+            Binary binary = binaryNumber;
+            //checking if the binaryNumberArray starts with one if yes it means it is a negative number
+            if (binaryNumber[0] == 1)
+            {
+                //taking the two's complement
+                binary = -binary;
+            }
+            int sum = 0;
+            int counter = 0;
+            //for loop to take power of bits location if they were one's
+            for (int i = ArrayLength - 1; i >= 0; i--)
+            {
+                sum = sum + (binary[i] * PowerOf(2, counter));
+                counter++;
+            }
+            return binaryNumber[0] == 1 ? -sum : sum;
         }
 
         #endregion
@@ -127,7 +145,7 @@ namespace CP
             //for loop to take power of bits location if they were one's
             for (int i = ArrayLength - 1; i >= 0; i--)
             {
-                sum = sum + (binary[i] * this.PowerOf(2, counter));
+                sum = sum + (binary[i] * PowerOf(2, counter));
                 counter++;
             }
             return binaryNumberArray[0] == 1 ? -sum : sum;
@@ -207,11 +225,11 @@ namespace CP
         // 2) Adding one to the previous operation result using + function
         public static Binary operator -(Binary number)
         {
-            Binary b = number;
+            Binary numberOne = number;
             Binary One = 0b0001;
-            b = ~b;
-            b += One;
-            return b;
+            numberOne = ~numberOne;
+            numberOne += One;
+            return numberOne;
         }
 
         #endregion
@@ -248,26 +266,26 @@ namespace CP
         // using Two's complement method to subtract
         public static Binary operator -(Binary number1, Binary number2)
         {
-            Binary n1 = number1;
-            Binary n2 = number2;
+            Binary numberOne = number1;
+            Binary numberTwo = number2;
             Binary One = 0b0001;
-            n2 = ~n2;
-            n2 += One;
-            return n1 + n2;
+            numberTwo = ~numberTwo;
+            numberTwo += One;
+            return numberOne + numberTwo;
         }
 
         // using subtraction method to divide the given numbers
         public static Binary operator /(Binary numberOneBinary, Binary numberTwoBinary)
         {
-            Dictionary<string, Binary> result = divide(numberOneBinary, numberTwoBinary);
+            Binary quotient = divide(numberOneBinary, numberTwoBinary, "quotient");
 
             // Converting quotent to negative if original number was negative
             if ((numberOneBinary[0] == 0 && numberTwoBinary[0] == 1) || (numberOneBinary[0] == 1 && numberTwoBinary[0] == 0))
             {
-                result["quotient"] = -result["quotient"];
+                quotient = -quotient;
             }
 
-            return result["quotient"];
+            return quotient;
         }
 
         public static Binary operator *(Binary number1, Binary number2)
@@ -292,14 +310,14 @@ namespace CP
 
         public static Binary operator %(Binary numberOneBinary, Binary numberTwoBinary)
         {
-            Dictionary<string, Binary> result = divide(numberOneBinary, numberTwoBinary);
+            Binary remainder = divide(numberOneBinary, numberTwoBinary);
 
             if (numberOneBinary[0] == 1)
             {
-                result["remainder"] = -result["remainder"];
+                remainder = -remainder;
             }
 
-            return result["remainder"];
+            return remainder;
         }
 
         #endregion
