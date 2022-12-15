@@ -25,6 +25,46 @@ namespace CP
         #endregion
 
         #region(Properties)
+        public Binary(int intValue)
+        {
+            //for loop for 16 bit as identified in ArrayLength Const
+            //to get decimal intValue binary implementation using AND operator with one shifted by bit location
+            for (int i = 0; i < ArrayLength; i++)
+                binaryNumberArray[ArrayLength - 1 - i] = (intValue & (1 << i)) != 0 ? 1 : 0;
+        }
+
+        public Binary(int[] intArrayValue)
+        {
+            this.binaryNumberArray = intArrayValue;
+        }
+
+        public int PowerOf(int number, int power)
+        {
+            int sum = 1;
+            for (int i = 0; i < power; i++)
+                sum = number * sum;
+            return sum;
+        }
+
+        public static Dictionary<string, Binary> divide(Binary numberOneBinary, Binary numberTwoBinary)
+        {
+            Dictionary<string, Binary> result = new Dictionary<string, Binary>();
+            // Converting negative numbers into positive
+            Binary numberOnePositive = numberOneBinary[0] == 1 ? -numberOneBinary : numberOneBinary;
+            Binary numberTwoPositive = numberTwoBinary[0] == 1 ? -numberTwoBinary : numberTwoBinary;
+            Binary remainder = numberOneBinary[0] == 1 ? -numberOneBinary : numberOneBinary;
+            // Taking two's complement if number is positive
+            Binary TwoComplement = numberTwoBinary[0] == 1 ? numberTwoBinary : -numberTwoBinary;
+            Binary quotient = 0b0000;
+            do
+            {
+                remainder = TwoComplement + remainder;
+                quotient += 0b0001; // Adding 1 to quotient
+            } while (remainder > numberTwoPositive); // Running loop till remainder is greater than second number
+            result["quotient"] = quotient;
+            result["remainder"] = remainder;
+            return result;
+        }
         #endregion
 
         #region(Index operator)
@@ -51,19 +91,6 @@ namespace CP
         public static implicit operator Binary(int[] intArrayValue)
         {
             return new Binary(intArrayValue);
-        }
-
-        public Binary(int[] intArrayValue)
-        {
-            this.binaryNumberArray = intArrayValue;
-        }
-
-        public Binary(int intValue)
-        {
-            //for loop for 16 bit as identified in ArrayLength Const
-            //to get decimal intValue binary implementation using AND operator with one shifted by bit location
-            for (int i = 0; i < ArrayLength; i++)
-                binaryNumberArray[ArrayLength - 1 - i] = (intValue & (1 << i)) != 0 ? 1 : 0;
         }
 
         #endregion
@@ -107,14 +134,6 @@ namespace CP
 
         }
 
-        public int PowerOf(int number, int power)
-        {
-            int sum = 1;
-            for(int i = 0; i < power; i++)
-                sum = number * sum;
-            return sum;
-        }
-
         #endregion
 
         #region(Shift Opertors: Shift to left by n (<<), Shift to right by n (>>))
@@ -123,10 +142,12 @@ namespace CP
         {
             int newArrayLength = ArrayLength - place;
             int[] tempNumber = new int[newArrayLength];
+            // Making space for number of places required to shift
             for (int i = place; i < ArrayLength; i++)
             {
                 tempNumber[i - place] = number.binaryNumberArray[i];
             }
+            // Adding remaining zeros and making the required binary number
             for (int i = 0; i < ArrayLength; i++)
             {
                 if (i >= tempNumber.Length)
@@ -145,10 +166,12 @@ namespace CP
         {
             int newArrayLength = ArrayLength - place;
             int[] tempNumber = new int[newArrayLength];
+            // Making space for number of places required to shift
             for (int i = 0; i < newArrayLength; i++)
             {
                 tempNumber[i] = number.binaryNumberArray[i];
             }
+            // Adding remaining zeros and making the required binary number
             for (int i = 0; i < ArrayLength; i++)
             {
                 if (i < place)
@@ -168,16 +191,20 @@ namespace CP
 
         #region(Binary Operators: Ones' complement, Negation)
 
+        // Reversing 0 to 1 and 1 to 0
         public static Binary operator ~(Binary number)
         {
             Binary oneComplement = new Binary(0);
-            for(int i = 0;  i < ArrayLength; i++)
+            for (int i = 0; i < ArrayLength; i++)
             {
                 oneComplement[i] = number.binaryNumberArray[i] == 1 ? 0 : 1;
             }
             return oneComplement;
         }
 
+        // performing two operations
+        // 1) reversing bits using ~ function
+        // 2) Adding one to the previous operation result using + function
         public static Binary operator -(Binary number)
         {
             Binary b = number;
@@ -218,265 +245,69 @@ namespace CP
             return new Binary(sum);
         }
 
+        // using Two's complement method to subtract
         public static Binary operator -(Binary number1, Binary number2)
         {
             Binary n1 = number1;
             Binary n2 = number2;
-            n2= ~n2;
-            n2 += 0b0001;
+            Binary One = 0b0001;
+            n2 = ~n2;
+            n2 += One;
             return n1 + n2;
         }
 
-                //public static bool Comparing(Binary a, Binary b)
-                //{
-                //    if (a[0] == b[0])
-                //    {
-                //        Binary temp = a - b;
-                //        if (temp[0] == a[0])
-                //        {
-                //            return true;
-                //        }
-                //        else return false;
-                //    }
-                //    else
-                //    {
-                //        Binary temp = a + b;
-                //        if (temp[0] == a[0])
-                //        {
-                //            return true;
-                //        }
-                //        else return false;
-                //    }
-                //}
-
-                //public static Binary Combine(Binary a, Binary b)
-                //{
-                //    int[] temp = new int[ArrayLength + ArrayLength];
-                //    Binary binary = new Binary(0);
-                //    for (int i = 0; i < ArrayLength; i++)
-                //    {
-                //        temp[i] = a[i];
-                //    }
-                //    for (int j = ArrayLength; j < temp.Length; j++)
-                //    {
-                //        temp[j] = b[j - ArrayLength];
-                //    }
-
-                //    //for (int i = 0; i < temp.Length; i++)
-                //    //{
-                //    //    Console.Write(temp[i]);
-                //    //}
-                //    //Console.WriteLine();
-                //    //Console.WriteLine();
-
-                //    int counter = 0;
-                //    for (int j = ArrayLength; j <= temp.Length - 1; j++)
-                //    {
-                //        binary[counter] = temp[j];
-                //        counter++;
-                //        //Console.Write(temp[j]);
-                //    }
-
-                //    Console.WriteLine();
-                //    for (int i = 0; i < ArrayLength; i++)
-                //    {
-                //        //Console.Write(binary[i]);
-                //    }
-
-                //    Console.WriteLine();
-                //    //Console.WriteLine(binary.ToString());
-                //    //Console.WriteLine(binary.ToDecimal());
-                //    //Console.WriteLine();
-                //    return binary;
-                //}
-
-                //public static Binary operator /(Binary number1, Binary number2)
-                //{
-                //    int[] nn = new int[16];
-                //    nn = number1.binaryNumberArray;
-                //    int[] nn2 = new int[16];
-                //    nn2 = number2.binaryNumberArray;
-
-                //    Binary quotient = new Binary(nn);
-                //    quotient = number1;
-                //    Binary divisor = new Binary(nn2);
-
-                //    divisor = number2;
-                //    Binary remainder = 0b0000;
-                //    for (int i = 0; i < number1.binaryNumberArray.Length; i++)
-                //    {
-                //        Console.Write(number1[i]);
-                //    }
-                //    Console.WriteLine(" " );
-                //    //Console.WriteLine("divisor " + divisor.ToString());
-
-                //    for (int i = ArrayLength - 1; i >= 0; i--)
-                //    {
-                //        remainder = remainder << 1;
-                //        remainder[ArrayLength - 1] = quotient[0];
-                //        quotient = quotient << 1;
-
-
-                //        if (Comparing(remainder, divisor))
-                //        {
-                //            if (remainder[0] == divisor[0])
-                //            {
-                //                remainder = remainder - divisor;
-                //            }
-                //            else
-                //            {
-                //                remainder = remainder + divisor;
-                //            }
-
-
-                //            quotient[ArrayLength - 1] = 1;
-                //        }
-                //        else
-                //        {
-                //            quotient[ArrayLength - 1] = 0;
-                //        }
-
-                //    }
-
-                //    //If the dividend has the different sign with divisor, replace quotient with its complement
-                //    if (!(quotient[0] == divisor[0]))
-                //    {
-                //        Binary temp = new Binary(new int[ArrayLength]);
-                //        for (int i = 0; i < ArrayLength; i++)
-                //        {
-                //            temp[i] = 0;
-                //        }
-                //        temp[ArrayLength - 1] = 1;
-                //        for (int i = 0; i < ArrayLength; i++)
-                //        {
-                //            quotient[i] = 1 - quotient[i];
-                //        }
-                //        quotient = quotient + temp;
-                //    }
-                //    //商保存在quotient中，余数保存在remainder中
-                //    Binary binary = new Binary(0);
-                //    binary = Combine(remainder, quotient);
-                //    //Console.WriteLine("hh "+binary.ToString());
-
-                //    return binary;
-
-                //}
-
-
+        // using subtraction method to divide the given numbers
         public static Binary operator /(Binary numberOneBinary, Binary numberTwoBinary)
         {
-            Binary divisor = new Binary(new int[ArrayLength * 2]);
-            Binary tempRemainder =  new Binary(new int[ArrayLength * 2]);//Initialized with dividend
-            Binary tempQuotient = new Binary(new int[ArrayLength]);
-            int[] remainder = new int[ArrayLength * 2];
-            int[] quotient = new int[ArrayLength];
+            Dictionary<string, Binary> result = divide(numberOneBinary, numberTwoBinary);
 
-            for (int i = (ArrayLength * 2) - 1; i >= 0; i--)
+            // Converting quotent to negative if original number was negative
+            if ((numberOneBinary[0] == 0 && numberTwoBinary[0] == 1) || (numberOneBinary[0] == 1 && numberTwoBinary[0] == 0))
             {
-                divisor[i] = 0;
-                tempRemainder[i] = 0;
-            }
-            for (int i = 0; i < ArrayLength; i++)
-            {
-                tempRemainder[i + ArrayLength] = numberOneBinary[i];
-                tempQuotient[i] = 0;
-                divisor[i] = numberTwoBinary[i];
+                result["quotient"] = -result["quotient"];
             }
 
-            for (int j = 0; j <= ArrayLength; j++)
-            {
-                tempRemainder = tempRemainder - divisor;
-                //if(!tempRemainder[0])
-                if (tempRemainder[0] == 0)
-                {
-                    //shift quotient left and set rightmost bit to 1
-                    for (int i = 0; i < ArrayLength - 1; i++)
-                    {
-                        tempQuotient[i] = tempQuotient[i + 1];
-                    }
-                    tempQuotient[ArrayLength - 1] = 1;
-                }
-                else
-                {
-                    tempRemainder = tempRemainder + divisor;
-                    //tempQuotient = shiftLeft(tempQuotient);
-                    tempQuotient = tempQuotient << 1;
-                }
-                //divisor = shiftRight(divisor);
-                divisor = divisor >> 1;
-            }
-            for (int i = ArrayLength - 1; i >= 0; i--)
-            {
-                remainder[i] = tempRemainder[i];
-            }
-            for (int i = ArrayLength - 1; i >= 0; i--)
-            {
-                quotient[i] = tempQuotient[i];
-            }
-            return quotient;
-
+            return result["quotient"];
         }
 
         public static Binary operator *(Binary number1, Binary number2)
         {
             Binary multiply = 0b0000; // Default value 0
             Binary result = 0b0000; // Default value 0
-            int counter = 0;
+            int counter = 0; // using counter to leftshift the result by 1
             //nested for loops to multiply all bits of both numbers
-            for(int i = ArrayLength - 1;  i>= 0; i--)
+            for (int i = ArrayLength - 1; i >= 0; i--)
             {
-                for(int j = ArrayLength - 1; j>= 0; j-- )
+                for (int j = ArrayLength - 1; j >= 0; j--)
                 {
                     if (j - counter < 0)
                         break;
-                    multiply[j-counter] = number2[i] * number1[j];
+                    multiply[j - counter] = number2[i] * number1[j];
                 }
                 counter++;
-                result+= multiply;
+                result += multiply;
             }
             return result;
         }
 
-        public static Binary operator %(Binary number1, Binary number2)
+        public static Binary operator %(Binary numberOneBinary, Binary numberTwoBinary)
         {
-            //TODO:: needs to be fixed to recive the second number as int binary array and return int binary result
-            int k = (int)number2.ToDecimal();
-            //this
+            Dictionary<string, Binary> result = divide(numberOneBinary, numberTwoBinary);
 
-            int n = ArrayLength;
-            int[] pwrTwo = new int[n];
-            pwrTwo[0] = 1 % k;
-            for (int i = 1; i < n; i++)
+            if (numberOneBinary[0] == 1)
             {
-                pwrTwo[i] = pwrTwo[i - 1] * (2 % k);
-                pwrTwo[i] %= k;
+                result["remainder"] = -result["remainder"];
             }
 
-            // To store the result
-            int res = 0;
-            int x = 0, j = n - 1;
-            while (x < n)
-            {
-                // If current bit is 1
-                if (number1[x] == 1)
-                {
-                    // Add the current power of 2
-                    res += (pwrTwo[x]);
-                    res %= k;
-                }
-                x++;
-                j--;
-            }
-
-            return new Binary(res);
+            return result["remainder"];
         }
 
         #endregion
 
         #region(Logical Operators: ==, !=, <, >, <=, >=)
-        public static bool operator == (Binary number1, Binary number2)
+        public static bool operator ==(Binary number1, Binary number2)
         {
-            for(int i = 0; i< ArrayLength; i++)
+            for (int i = 0; i < ArrayLength; i++)
             {
                 if (number1[i] != number2[i])
                 {
@@ -486,49 +317,55 @@ namespace CP
             return true;
         }
 
-        public static bool operator != (Binary number1, Binary number2)
+        public static bool operator !=(Binary number1, Binary number2)
         {
             return !(number1 == number2);
         }
 
-        public static bool operator > (Binary number1, Binary number2)
+        public static bool operator >(Binary number1, Binary number2)
         {
-            if (number1[0] != 1 && number2[0] == 1)
-            {
-                return true;
-            }
-            else if (number1[0] == 1 && number2[0] != 1)
+            int count = 0;
+            if (number1 == number2)
             {
                 return false;
             }
-            int count = 0;
-            for(int i = 0; i < ArrayLength; i++)
+            if (number1[0] == 0 && number2[0] == 1)
             {
-                if(number1[i] > number2[i])
+                return true;
+            }
+            else if (number1[0] == 1 && number2[0] == 0)
+            {
+                return false;
+            }
+            for (int i = 0; i < ArrayLength; i++)
+            {
+                if (number1[i] > number2[i])
                 {
                     count++;
+                    break;
                 }
-                else if(number1[i] < number2[i])
+                else if (number1[i] < number2[i])
                 {
                     count--;
+                    break;
                 }
             }
-            return count > 0 ? true : false;
+            return count >= 0 ? true : false;
         }
 
-        public static bool operator < (Binary number1, Binary number2)
+        public static bool operator <(Binary number1, Binary number2)
         {
             return !(number1 > number2);
         }
 
-        public static bool operator >= (Binary number1, Binary number2)
+        public static bool operator >=(Binary number1, Binary number2)
         {
             bool equal = number1 == number2;
             bool greater = number1 > number2;
             return equal || greater;
         }
 
-        public static bool operator <= (Binary number1, Binary number2)
+        public static bool operator <=(Binary number1, Binary number2)
         {
             bool equal = number1 == number2;
             bool lessThan = number1 < number2;
