@@ -227,6 +227,142 @@ namespace CP
             return n1 + n2;
         }
 
+                //public static bool Comparing(Binary a, Binary b)
+                //{
+                //    if (a[0] == b[0])
+                //    {
+                //        Binary temp = a - b;
+                //        if (temp[0] == a[0])
+                //        {
+                //            return true;
+                //        }
+                //        else return false;
+                //    }
+                //    else
+                //    {
+                //        Binary temp = a + b;
+                //        if (temp[0] == a[0])
+                //        {
+                //            return true;
+                //        }
+                //        else return false;
+                //    }
+                //}
+
+                //public static Binary Combine(Binary a, Binary b)
+                //{
+                //    int[] temp = new int[ArrayLength + ArrayLength];
+                //    Binary binary = new Binary(0);
+                //    for (int i = 0; i < ArrayLength; i++)
+                //    {
+                //        temp[i] = a[i];
+                //    }
+                //    for (int j = ArrayLength; j < temp.Length; j++)
+                //    {
+                //        temp[j] = b[j - ArrayLength];
+                //    }
+
+                //    //for (int i = 0; i < temp.Length; i++)
+                //    //{
+                //    //    Console.Write(temp[i]);
+                //    //}
+                //    //Console.WriteLine();
+                //    //Console.WriteLine();
+
+                //    int counter = 0;
+                //    for (int j = ArrayLength; j <= temp.Length - 1; j++)
+                //    {
+                //        binary[counter] = temp[j];
+                //        counter++;
+                //        //Console.Write(temp[j]);
+                //    }
+
+                //    Console.WriteLine();
+                //    for (int i = 0; i < ArrayLength; i++)
+                //    {
+                //        //Console.Write(binary[i]);
+                //    }
+
+                //    Console.WriteLine();
+                //    //Console.WriteLine(binary.ToString());
+                //    //Console.WriteLine(binary.ToDecimal());
+                //    //Console.WriteLine();
+                //    return binary;
+                //}
+
+                //public static Binary operator /(Binary number1, Binary number2)
+                //{
+                //    int[] nn = new int[16];
+                //    nn = number1.binaryNumberArray;
+                //    int[] nn2 = new int[16];
+                //    nn2 = number2.binaryNumberArray;
+
+                //    Binary quotient = new Binary(nn);
+                //    quotient = number1;
+                //    Binary divisor = new Binary(nn2);
+
+                //    divisor = number2;
+                //    Binary remainder = 0b0000;
+                //    for (int i = 0; i < number1.binaryNumberArray.Length; i++)
+                //    {
+                //        Console.Write(number1[i]);
+                //    }
+                //    Console.WriteLine(" " );
+                //    //Console.WriteLine("divisor " + divisor.ToString());
+
+                //    for (int i = ArrayLength - 1; i >= 0; i--)
+                //    {
+                //        remainder = remainder << 1;
+                //        remainder[ArrayLength - 1] = quotient[0];
+                //        quotient = quotient << 1;
+
+
+                //        if (Comparing(remainder, divisor))
+                //        {
+                //            if (remainder[0] == divisor[0])
+                //            {
+                //                remainder = remainder - divisor;
+                //            }
+                //            else
+                //            {
+                //                remainder = remainder + divisor;
+                //            }
+
+
+                //            quotient[ArrayLength - 1] = 1;
+                //        }
+                //        else
+                //        {
+                //            quotient[ArrayLength - 1] = 0;
+                //        }
+
+                //    }
+
+                //    //If the dividend has the different sign with divisor, replace quotient with its complement
+                //    if (!(quotient[0] == divisor[0]))
+                //    {
+                //        Binary temp = new Binary(new int[ArrayLength]);
+                //        for (int i = 0; i < ArrayLength; i++)
+                //        {
+                //            temp[i] = 0;
+                //        }
+                //        temp[ArrayLength - 1] = 1;
+                //        for (int i = 0; i < ArrayLength; i++)
+                //        {
+                //            quotient[i] = 1 - quotient[i];
+                //        }
+                //        quotient = quotient + temp;
+                //    }
+                //    //商保存在quotient中，余数保存在remainder中
+                //    Binary binary = new Binary(0);
+                //    binary = Combine(remainder, quotient);
+                //    //Console.WriteLine("hh "+binary.ToString());
+
+                //    return binary;
+
+                //}
+
+
         public static Binary operator /(Binary numberOneBinary, Binary numberTwoBinary)
         {
             Binary divisor = new Binary(new int[ArrayLength * 2]);
